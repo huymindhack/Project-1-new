@@ -83,6 +83,7 @@
                         </div>
 
                         <form action="Cart" method="post" class="mt-3">
+                            <input type="hidden" name="hidden_img" value="<?php echo $row['img']; ?>">
                             <input type="hidden" name="hidden_id" value="<?php echo $row['p_id']; ?>">
                             <input type="hidden" name="hidden_name" value="<?php echo $row['p_name'] ?>">
                             <input type="hidden" name="hidden_price" value="<?php echo $row['price'] ?>">
