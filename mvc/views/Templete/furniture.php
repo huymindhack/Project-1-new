@@ -1,6 +1,25 @@
 <?php 
   session_start();
   include "../Project-1/mvc/core/code.php";
+  $sort_option = "name ASC";
+
+// Check if a sort option is selected
+  if (isset($_POST['sort_by'])) {
+      switch ($_POST['sort_by']) {
+          case 'name_asc':
+              $sort_option = "p_name ASC";
+              break;
+          case 'name_desc':
+              $sort_option = "p_name DESC";
+              break;
+          case 'price_asc':
+              $sort_option = "price ASC";
+              break;
+          case 'price_desc':
+              $sort_option = "price DESC";
+              break;
+      }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -57,11 +76,27 @@
           which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't an
         </p>
       </div>
+
+      <form method="post" action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+        <select name="sort_by" class="form-select" onchange="this.form.submit()">
+          <option value="name_asc">Name A-Z</option>
+          <option value="name_desc">Name Z-A</option>
+          <option value="price_asc">Price Low to High</option>
+          <option value="price_desc">Price High to Low</option>
+        </select>
+      </form>
               
       <div class="row">
           <?php 
-              $query = "select * from product";
-              $result = mysqli_query($conn, $query);
+              if (isset($_POST['sort_by'])) {
+                $query = "select * from product order by $sort_option";
+                $result = mysqli_query($conn, $query);
+              }
+
+              else {
+                $query = "select * from product";
+                $result = mysqli_query($conn, $query);
+              }
 
               if (mysqli_num_rows($result) > 0) {
               while ($row = mysqli_fetch_array($result)) {

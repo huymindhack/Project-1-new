@@ -131,13 +131,13 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-hover">
                         <tr>
-                            <th width="40%">Image</th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Action</th>
+                            <th width="40%" class="bg-success text-center text-white">Image</th>
+                            <th class="bg-success text-center text-white">Name</th>
+                            <th class="bg-success text-center text-white">Quantity</th>
+                            <th class="bg-success text-center text-white">Price</th>
+                            <th class="bg-success text-center text-white">Action</th>
                         </tr>
 
                         <?php 
@@ -147,16 +147,15 @@
                         ?>
                             <tr>
                                 <td align="center"><img src="../Project-1/mvc/views/Templete/images/<?php echo $values['item_img']; ?>" alt="" class="img-res"></td>
-                                <td><?php echo $values['item_name']; ?></td>
-                                <td><?php echo $values['quantity']; ?></td>
-                                <td>$ <?php echo number_format($values['item_price'] * $values['quantity']); ?></td>
-                                <td>
+                                <td align="center"><?php echo $values['item_name']; ?></td>
+                                <td align="center"><?php echo $values['quantity']; ?></td>
+                                <td align="center">$ <?php echo number_format($values['item_price'] * $values['quantity']); ?></td>
+                                <td align="center">
                                     <form action="Cart" method="post">
                                         <input type="hidden" name="hidden_id" value="<?php echo $values['item_id']; ?>">
                                         <input type="submit" name="delete" class="btn btn-danger" value="Remove">
                                     </form>
                                 </td>
-                                <td></td>
                             </tr>
                         <?php 
                             $total = $total + ($values['item_price'] * $values['quantity']);
@@ -165,9 +164,9 @@
                         ?>
 
                             <tr>
-                                <td colspan="3" align="right">Total:</td>
-                                <td>$ <?php echo number_format($total); ?></td>
-                                <td></td>
+                                <td colspan="3" align="right" class="bg-success text-white font-weight-bold">Total:</td>
+                                <td align="center" class="bg-success text-white font-weight-bold">$ <?php echo number_format($total); ?></td>
+                                <td class="bg-success text-white"></td>
                             </tr>
                     </table>
                 </div>
@@ -197,28 +196,28 @@
                     <div class="mb-3">
                         <div class="form-check form-check-inline">
                             <label for="visa" class="form-check-label d-flex align-items-center">
-                                <input type="checkbox" name="visa" class="form-check-input">
+                                <input type="radio" name="payment_method" value="visa" class="form-check-input">
                                 <i class='bx bxl-visa fs-1'></i> 
                             </label>
                         </div>
 
                         <div class="form-check form-check-inline">
                             <label for="mastercard" class="form-check-label d-flex align-items-center">
-                                <input type="checkbox" name="mastercard" class="form-check-input">
+                                <input type="radio" name="payment_method" value="mastercard" class="form-check-input">
                                 <i class='bx bxl-mastercard fs-2'></i> 
                             </label>
                         </div>
 
                         <div class="form-check form-check-inline">
                             <label for="credit" class="form-check-label d-flex align-items-center">
-                                <input type="checkbox" name="credit" class="form-check-input">
+                                <input type="radio" name="payment_method" value="credit" class="form-check-input">
                                 <i class='bx bx-credit-card fs-2'></i> 
                             </label>
                         </div>
 
                         <div class="form-check form-check-inline">
                             <label for="cash" class="form-check-label d-flex align-items-center">
-                                <input type="checkbox" name="cash" class="form-check-input">
+                                <input type="radio" name="payment_method" value="cash" class="form-check-input">
                                 <i class='bx bx-money fs-2'></i> 
                             </label>
                         </div>
