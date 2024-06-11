@@ -36,6 +36,44 @@
 
 </head>
 
+<style>
+  textarea {
+    resize: none;
+  }
+
+  .contact_section .form_container textarea {
+  width: 100%;
+  border: none;
+  height: 50px;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  outline: none;
+  color: #101010;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.contact_section .form_container textarea::-webkit-input-placeholder {
+  color: #333;
+}
+
+.contact_section .form_container textarea:-ms-input-placeholder {
+  color: #333;
+}
+
+.contact_section .form_container textarea::-ms-input-placeholder {
+  color: #333;
+}
+
+.contact_section .form_container textarea::placeholder {
+  color: #333;
+}
+
+.contact_section .form_container textarea.message-box {
+  height: 120px;
+}
+</style>
+
 <body>
 
   <div class="hero_area">
@@ -123,10 +161,10 @@
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
+                      <a href="contact" class="btn1">
                         Contact Us
                       </a>
-                      <a href="" class="btn2">
+                      <a href="about" class="btn2">
                         About Us
                       </a>
                     </div>
@@ -427,7 +465,7 @@
                 <input type="email" name="email" placeholder="Email" />
               </div>
               <div>
-                <input type="text" name="message" class="message-box" placeholder="Message" />
+                <textarea type="text" name="message" class="message-box" placeholder="Message"></textarea>
               </div>
               <div class="btn_box">
                 <button type="submit">

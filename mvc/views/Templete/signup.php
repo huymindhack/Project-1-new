@@ -4,11 +4,16 @@
   $error = "";
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
 
     $regex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/';
+
+    $sql = "select * from users_account where email = '$email'";
+
+    $result = mysqli_query($conn, $sql);
 
     if ($email == "" || $password == "") {
       $error = "Pleae fill out all the information";
@@ -18,9 +23,9 @@
       $error = "Invalid email address";
     }
 
-    // else if () {
-    //   $error = "Email has already been used";
-    // }
+    else if (mysqli_num_rows($result) > 0) {
+      $error = "Email has already been used";
+    }
 
     else if ($password != $password2) {
       $error = "Password mismatch";
@@ -29,12 +34,13 @@
     else {
       $password_cript = md5($password);
       $data = array(
+        "fullname" => $name,
         "email" => $email,
         "password" => $password_cript
       );
 
       if (insertData($conn, "users_account", $data)) {
-        $_SESSION['email'] = $email;
+        $_SESSION['fullname'] = $name;
         header("Location: Home");
       } else {
         $error = "Failed to register";
@@ -70,6 +76,11 @@
               </div>
             <?php endif; ?>
             <div class="mb-3 mt-5 input-group">
+              <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+              <input type="text" placeholder="Enter your full name" name="name" class="form-control">
+            </div>
+
+            <div class="mb-3 input-group">
                 <span class="input-group-text">@</span>
 
                 <input type="text" placeholder="Enter your email" name="email" class="form-control">

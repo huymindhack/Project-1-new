@@ -1,7 +1,7 @@
 <?php 
 
-  if (isset($_GET['logout'])) {
-    unset($_SESSION['email']);
+  if (isset($_POST['logout'])) {
+    unset($_SESSION['fullname']);
     header('Location: Home');
   }
 ?>
@@ -38,13 +38,17 @@
           </div>
           <div class="quote_btn-container">
               <span>
-                <?php if (isset($_SESSION['email'])): ?>
+                <?php if (isset($_SESSION['fullname'])): ?>
                   <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Welcome <strong><?php echo $_SESSION['email']; ?></strong>
+                      Welcome <strong><?php echo $_SESSION['fullname']; ?></strong>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item text-danger" href="index.php?logout='1'">Log Out</a></li>
+                      <li>
+                        <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                          <input type="submit" name="logout" class="dropdown-item text-danger" value="Log Out">
+                        </form>
+                      </li>
                       <li><a class=" dropdown-item text-secondary" href="Cart"><i class="bi bi-cart"></i></a></li>
                     </ul>
                   </div>

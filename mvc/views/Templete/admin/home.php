@@ -1,4 +1,6 @@
-<?php include 'header.php'; ?>
+<?php 
+    include "header.php";
+?>
 <div class="bg-light p-5 rounded-lg m-3">
     <div class="container">
         <h1 class="display-4">Nội thất cống thai</h1>

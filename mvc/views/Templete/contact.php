@@ -32,6 +32,44 @@
 
 </head>
 
+<style>
+  textarea {
+    resize: none;
+  }
+
+  .contact_section .form_container textarea {
+  width: 100%;
+  border: none;
+  height: 50px;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  outline: none;
+  color: #101010;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.contact_section .form_container textarea::-webkit-input-placeholder {
+  color: #333;
+}
+
+.contact_section .form_container textarea:-ms-input-placeholder {
+  color: #333;
+}
+
+.contact_section .form_container textarea::-ms-input-placeholder {
+  color: #333;
+}
+
+.contact_section .form_container textarea::placeholder {
+  color: #333;
+}
+
+.contact_section .form_container textarea.message-box {
+  height: 120px;
+}
+</style>
+
 <body class="sub_page">
 
   <div class="hero_area">
@@ -62,7 +100,7 @@
                 <input type="email" name="email" placeholder="Email" />
               </div>
               <div>
-                <input type="text" name="message" class="message-box" placeholder="Message" />
+                <textarea name="message" class="message-box" placeholder="Message" placeholder="form-control"></textarea>
               </div>
               <div class="btn_box">
                 <button type="submit">

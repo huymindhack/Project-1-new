@@ -1,8 +1,10 @@
 <?php   
- session_start();  
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
  $connect = mysqli_connect("localhost", "root", "", "Project-1"); 
 
- if (isset($_SESSION['email'])) {
+ if (isset($_SESSION['fullname'])) {
         if(isset($_POST["add_to_cart"]))  
     {  
         if(isset($_SESSION["shopping_cart"]))  
@@ -50,9 +52,56 @@
             }  
         }  
     }
- }
 
- else {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order'])) {
+        $customer_name = $_POST['name'];
+        $phone_number = $_POST['phone_number'];
+        $address = $_POST['address'];
+        $total_price = 0;
+        $payment_method = $_POST['payment_method'];
+
+        foreach ($_SESSION['shopping_cart'] as $key => $values) {
+            $total_price += $values['item_price'] * $values['quantity'];
+        }
+
+        //insert orders
+        $sql_order = "INSERT INTO orders (customer_name, phone_number, address, payment_method, total_price) VALUES ('$customer_name', '$phone_number', '$address', '$payment_method', '$total_price')";
+
+        if (mysqli_query($connect, $sql_order)) {
+            echo "<script> alert('Đặt hàng thành công!'); </script>";
+            $order_id = mysqli_insert_id($connect);
+       // Lưu thông tin chi tiết đơn hàng vào bảng order_details
+            foreach ($_SESSION['shopping_cart'] as $key => $values) {
+
+                $product_id = $values['item_id'];
+                $quantity = $values['quantity'];
+                $unit_price = $values['item_price'];
+                $price = $unit_price * $quantity;
+                $sql_order_detail = "INSERT INTO order_details (order_id, product_id, quantity, price) VALUES ('$order_id', '$product_id', '$quantity', '$price')";
+                
+                if (mysqli_query($connect, $sql_order_detail)) {
+                    echo "<script> alert('Đã lưu vào hệ thống thành công!'); </script>";
+                }
+
+                else {
+                    echo "Loi ko luu dc";
+                }
+            } 
+        }
+
+        else {
+            echo "Lỗi: " . $sql . "<br>" . mysqli_error($connect);
+        }
+        // Xóa giỏ hàng sau khi đặt hàng thành công
+        // unset($_SESSION['shopping_cart']);
+        
+        // echo '<script>alert("Order placed successfully!")</script>';  
+        // echo '<script>window.location="Cart"</script>';  
+
+        //////
+    }
+
+} else {
     header('Location: login');
  }
  ?>
@@ -171,7 +220,7 @@
                     </table>
                 </div>
 
-                <form action="" method="post" class="mt-5 bg-light px-5 py-5">
+                <form action="Cart" method="post" class="mt-5 bg-light px-5 py-5">
                     <div class="heading_container mb-4">
                         <h2>Customer's Information</h2>
                     </div>

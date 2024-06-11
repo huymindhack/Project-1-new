@@ -4,17 +4,13 @@
   $error = "";
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
+    $fullname = $_POST['fullname'];
     $password = $_POST['password'];
 
     $regex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/';
 
-    if ($email == "" || $password == "") {
+    if ($fullname == "" || $password == "") {
       $error = "Pleae fill out all the information";
-    }
-
-    else if (!preg_match($regex, $email)) {
-      $error = "Invalid email address";
     }
 
     // else if () {
@@ -23,7 +19,7 @@
 
     else {
       $password_cript = md5($password);
-      $sql = "select * from users_account where email = '$email' and password = '$password_cript'";
+      $sql = "select * from users_account where fullname = '$fullname' and password = '$password_cript'";
 
       $result = mysqli_query($conn, $sql);
 
@@ -33,7 +29,7 @@
 
         if ($rows['role'] != 'admin') {
 
-          $_SESSION['email'] = $email;
+          $_SESSION['fullname'] = $rows['fullname'];
           header("Location: Home");
 
         }
@@ -44,7 +40,7 @@
 
         
       } else {
-        $error = "Incorrect email address or password";
+        $error = "Incorrect full name  or password";
       }
     }
   }
@@ -80,7 +76,7 @@
             <div class="mb-3 mt-5 input-group">
                 <span class="input-group-text">@</span>
 
-                <input type="text" placeholder="Enter your email" name="email" class="form-control">
+                <input type="text" placeholder="Enter your full name" name="fullname" class="form-control">
             </div>
 
             <div class="mb-3 input-group">
