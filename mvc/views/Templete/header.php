@@ -7,7 +7,7 @@
 ?>
     <header class="header_section long_section px-0">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="Home">
           <span>
             Jessica's Furnitures
           </span>

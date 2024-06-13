@@ -85,7 +85,7 @@
                 <input type="password" placeholder="Enter your password" name="password" class="form-control">
             </div>
 
-            <a href="" class=" text-decoration-none text-success">Forgot your password?</a>
+            <a href="forgot" class=" text-decoration-none text-success">Forgot your password?</a>
 
             <input type="submit" name="submit" class="btn btn-success w-100 mt-3 mb-3" value="Login">
 
