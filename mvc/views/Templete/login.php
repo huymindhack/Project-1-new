@@ -10,7 +10,7 @@
     $regex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/';
 
     if ($fullname == "" || $password == "") {
-      $error = "Pleae fill out all the information";
+      $error = "Please fill out all the information";
     }
 
     // else if () {
