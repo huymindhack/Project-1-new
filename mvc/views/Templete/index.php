@@ -204,7 +204,7 @@
       <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post ">
         <div class="row">
           <?php 
-            $query = "select * from product";
+            $query = "select * from product limit 3";
             $result = mysqli_query($conn, $query);
 
             if (mysqli_num_rows($result) > 0) {
@@ -224,8 +224,16 @@
                   <h6 class="price_heading">
                     <span>$</span> <?php echo $row['price']; ?>
                   </h6>
-                  <input type="submit" class="btn btn-primary" value="Add to cart" name="add-to-cart">
                 </div>
+
+                <form action="Cart" method="post" class="mt-3">
+                            <input type="hidden" name="hidden_img" value="<?php echo $row['img']; ?>">
+                            <input type="hidden" name="hidden_id" value="<?php echo $row['p_id']; ?>">
+                            <input type="hidden" name="hidden_name" value="<?php echo $row['p_name'] ?>">
+                            <input type="hidden" name="hidden_price" value="<?php echo $row['price'] ?>">
+                            <input type="number" name="quantity" value="1" class="form-control mb-3">
+                            <input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
+                  </form>
               </div>
             </div>
           </div>
