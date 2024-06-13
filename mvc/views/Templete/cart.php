@@ -81,6 +81,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 
                 if (mysqli_query($connect, $sql_order_detail)) {
                     echo "<script> alert('Đã lưu vào hệ thống thành công!'); </script>";
+                    unset($_SESSION['shopping_cart']);
                 }
 
                 else {
@@ -220,7 +221,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     </table>
                 </div>
 
-                <form action="Cart" method="post" class="mt-5 bg-light px-5 py-5">
+                <form action="Cart" method="post" class="mt-5 bg-light px-5 py-5 rounded">
                     <div class="heading_container mb-4">
                         <h2>Customer's Information</h2>
                     </div>
