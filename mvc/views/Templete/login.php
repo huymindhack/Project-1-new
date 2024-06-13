@@ -74,7 +74,7 @@
             <?php endif; ?>
 
             <div class="mb-3 mt-5 input-group">
-                <span class="input-group-text">@</span>
+                <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
 
                 <input type="text" placeholder="Enter your full name" name="fullname" class="form-control">
             </div>
