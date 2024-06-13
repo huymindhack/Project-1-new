@@ -122,7 +122,7 @@
                             <input type="hidden" name="hidden_id" value="<?php echo $row['p_id']; ?>">
                             <input type="hidden" name="hidden_name" value="<?php echo $row['p_name'] ?>">
                             <input type="hidden" name="hidden_price" value="<?php echo $row['price'] ?>">
-                            <input type="text" name="quantity" value="1" class="form-control mb-3">
+                            <input type="number" name="quantity" value="1" class="form-control mb-3">
                             <input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
                           </form>
                       </div>

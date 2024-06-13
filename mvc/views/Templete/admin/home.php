@@ -6,7 +6,7 @@
         <h1 class="display-4">Nội thất cống thai</h1>
         <p class="lead">yuh</p>
         <p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">More</a>
+            <a class="btn btn-primary btn-lg" href="index.php?action=orders" role="button">More</a>
         </p>
     </div>
 </div>

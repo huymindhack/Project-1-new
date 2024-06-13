@@ -22,6 +22,7 @@
                 <li class="nav-item"><a class="nav-link" href="add_category.php">Thêm mới danh mục</a></li>
                 <li class="nav-item"><a class="nav-link" href="add_product.php">Thêm mới sản phẩm</a></li>
                 <li class="nav-item"><a class="nav-link" href="user_accounts.php">Người dùng</a></li>
+                <li class="nav-item"><a class="nav-link" href="orders.php">Đơn hàng</a></li>
             </ul>
         </div>
     </div>

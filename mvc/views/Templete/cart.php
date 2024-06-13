@@ -57,6 +57,7 @@ if (session_status() == PHP_SESSION_NONE) {
         $customer_name = $_POST['name'];
         $phone_number = $_POST['phone_number'];
         $address = $_POST['address'];
+        $order_date = date('Y-m-d H:i:s');
         $total_price = 0;
         $payment_method = $_POST['payment_method'];
 
@@ -65,7 +66,7 @@ if (session_status() == PHP_SESSION_NONE) {
         }
 
         //insert orders
-        $sql_order = "INSERT INTO orders (customer_name, phone_number, address, payment_method, total_price) VALUES ('$customer_name', '$phone_number', '$address', '$payment_method', '$total_price')";
+        $sql_order = "INSERT INTO orders (customer_name, phone_number, address, order_date, payment_method, total_price) VALUES ('$customer_name', '$phone_number', '$address', '$order_date', '$payment_method', '$total_price')";
 
         if (mysqli_query($connect, $sql_order)) {
             echo "<script> alert('Đặt hàng thành công!'); </script>";
