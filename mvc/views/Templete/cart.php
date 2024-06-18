@@ -61,38 +61,40 @@ if (session_status() == PHP_SESSION_NONE) {
         $total_price = 0;
         $payment_method = $_POST['payment_method'];
 
-        foreach ($_SESSION['shopping_cart'] as $key => $values) {
-            $total_price += $values['item_price'] * $values['quantity'];
-        }
-
-        //insert orders
-        $sql_order = "INSERT INTO orders (customer_name, phone_number, address, order_date, payment_method, total_price) VALUES ('$customer_name', '$phone_number', '$address', '$order_date', '$payment_method', '$total_price')";
-
-        if (mysqli_query($connect, $sql_order)) {
-            echo "<script> alert('Đặt hàng thành công!'); </script>";
-            $order_id = mysqli_insert_id($connect);
-       // Lưu thông tin chi tiết đơn hàng vào bảng order_details
-            foreach ($_SESSION['shopping_cart'] as $key => $values) {
-
-                $product_id = $values['item_id'];
-                $quantity = $values['quantity'];
-                $unit_price = $values['item_price'];
-                $price = $unit_price * $quantity;
-                $sql_order_detail = "INSERT INTO order_details (order_id, product_id, quantity, price) VALUES ('$order_id', '$product_id', '$quantity', '$price')";
-                
-                if (mysqli_query($connect, $sql_order_detail)) {
-                    echo "<script> alert('Đã lưu vào hệ thống thành công!'); </script>";
-                    unset($_SESSION['shopping_cart']);
-                }
-
-                else {
-                    echo "Loi ko luu dc";
-                }
-            } 
+        if ($customer_name == '' || $phone_number == '' || $address == '') {
+            echo "<script>alert('Please enter all the require information')</script>";
         }
 
         else {
-            echo "Lỗi: " . $sql . "<br>" . mysqli_error($connect);
+            foreach ($_SESSION['shopping_cart'] as $key => $values) {
+                $total_price += $values['item_price'] * $values['quantity'];
+            }
+    
+            //insert orders
+            $sql_order = "INSERT INTO orders (customer_name, phone_number, address, order_date, payment_method, total_price) VALUES ('$customer_name', '$phone_number', '$address', '$order_date', '$payment_method', '$total_price')";
+    
+            if (mysqli_query($connect, $sql_order)) {
+                echo "<script> alert('Đặt hàng thành công!'); </script>";
+                $order_id = mysqli_insert_id($connect);
+           // Lưu thông tin chi tiết đơn hàng vào bảng order_details
+                foreach ($_SESSION['shopping_cart'] as $key => $values) {
+    
+                    $product_id = $values['item_id'];
+                    $quantity = $values['quantity'];
+                    $unit_price = $values['item_price'];
+                    $price = $unit_price * $quantity;
+                    $sql_order_detail = "INSERT INTO order_details (order_id, product_id, quantity, price) VALUES ('$order_id', '$product_id', '$quantity', '$price')";
+                    
+                    if (mysqli_query($connect, $sql_order_detail)) {
+                        echo "<script> alert('Đã lưu vào hệ thống thành công!'); </script>";
+                        unset($_SESSION['shopping_cart']);
+                    }
+    
+                    else {
+                        echo "Loi ko luu dc";
+                    }
+                } 
+            }
         }
         // Xóa giỏ hàng sau khi đặt hàng thành công
         // unset($_SESSION['shopping_cart']);
@@ -122,7 +124,7 @@ if (session_status() == PHP_SESSION_NONE) {
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Cart</title>
+  <title>Jessica's Furniture</title>
 
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
