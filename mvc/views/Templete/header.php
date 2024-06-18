@@ -8,9 +8,7 @@
     <header class="header_section long_section px-0">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
         <a class="navbar-brand" href="Home">
-          <span>
-            Jessica's Furnitures
-          </span>
+          <span>Jessica's Furnitures</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class=""> </span>
@@ -46,7 +44,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li>
                         <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-                          <input type="submit" name="logout" class="dropdown-item text-danger" value="Log Out">
+                          <input type="submit" name="logout" class="dropdown-item text-danger" value="LOG OUT">
                         </form>
                       </li>
                       <li><a class=" dropdown-item text-secondary" href="Cart"><i class="bi bi-cart"></i></a></li>
