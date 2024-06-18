@@ -58,7 +58,7 @@
               </h2>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
+              Each product is crafted with high-quality materials and designed to enhance the aesthetic appeal of your home. Whether you need a chic sofa, a sturdy dining table, or stylish storage solutions, our collection promises both beauty and longevity.
             </p>
             <a href="">
               Read More

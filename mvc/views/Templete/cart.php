@@ -178,7 +178,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <section class="layout_padding">
             <div class="container">
                 <div class="heading_container mb-4">
-                    <h2>Order Details</h2>
+                    <h2>Shopping Cart</h2>
                 </div>
 
                 <div class="table-responsive">

@@ -50,6 +50,7 @@
                         </form>
                       </li>
                       <li><a class=" dropdown-item text-secondary" href="Cart"><i class="bi bi-cart"></i></a></li>
+                      <li><a class=" dropdown-item text-secondary" href="order">Check Orders</a></li>
                     </ul>
                   </div>
                 <?php else: ?>
